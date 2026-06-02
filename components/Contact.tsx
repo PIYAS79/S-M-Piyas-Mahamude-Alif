@@ -88,7 +88,7 @@ export default function Contact() {
 
                 {/* Email */}
                 <a
-                  href="mailto:piyasmahmudealif@gmail.com"
+                  href="mailto:piyasmahamudealif@gmail.com"
                   className={`flex items-center gap-4 p-4 rounded-xl border transition-all group shadow-sm ${isDark ? 'bg-stone-950 border-zinc-900/80 hover:border-orange-500/30 hover:bg-stone-900' : 'bg-zinc-50 border-zinc-200 hover:border-orange-400 hover:bg-zinc-100/50'}`}
                 >
                   <div className={`p-2.5 rounded-lg border transition-colors ${isDark ? 'bg-stone-900 border-orange-500/30 text-orange-400' : 'bg-[#fefefe] border-orange-200 text-orange-605'}`}>
