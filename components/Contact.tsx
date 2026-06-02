@@ -97,7 +97,7 @@ export default function Contact() {
                   <div className="overflow-hidden">
                     <p className="text-zinc-500 uppercase text-[9px] tracking-wider font-semibold">SECURE DIRECT MAIL</p>
                     <p className={`hover:text-orange-600 transition-colors truncate font-semibold ${isDark ? 'text-zinc-250' : 'text-zinc-800'}`}>
-                      piyasmahmudealif@gmail.com
+                      piyasmahamudealif@gmail.com
                     </p>
                   </div>
                 </a>
