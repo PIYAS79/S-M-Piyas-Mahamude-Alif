@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { Award, Briefcase, Code, Brain, Compass, HelpCircle, Layers, Calendar } from 'lucide-react';
+import { Award, Briefcase, Code, Brain, Compass, Layers, Calendar } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 const stats = [
