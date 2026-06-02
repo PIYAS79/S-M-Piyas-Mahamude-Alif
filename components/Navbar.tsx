@@ -1,5 +1,6 @@
-'use client';
+"use client";
 
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ArrowUpRight, Sun, Moon } from 'lucide-react';
@@ -23,10 +24,8 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Background change on scroll
       setScrolled(window.scrollY > 20);
 
-      // Simple active link detector
       const sections = navItems.map(item => item.href.substring(1));
       const scrollPosition = window.scrollY + 150;
 
@@ -47,11 +46,27 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // ✅ FIX 1: Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  // ✅ FIX 2: Close menu first, then scroll after short delay
   const handleNavClick = (href: string) => {
     setIsOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+    const id = href.replace('#', '');
+    const el = document.getElementById(id);
+    if (el) {
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }, 50);
     }
   };
 
@@ -121,7 +136,6 @@ export default function Navbar() {
 
           {/* Theme Switcher & Hire Me CTA Button */}
           <div className="hidden md:flex items-center gap-3">
-            {/* Theme switcher on left side of HIRE ME */}
             <button
               onClick={toggleTheme}
               className={`p-2.5 rounded-full border transition-all duration-300 hover:scale-[1.08] active:scale-95 cursor-pointer shadow-sm ${
@@ -152,7 +166,6 @@ export default function Navbar() {
 
           {/* Mobile Menu Buttons */}
           <div className="flex md:hidden items-center gap-3">
-            {/* Mobile Theme Switcher Icon */}
             <button
               onClick={toggleTheme}
               className={`p-2.5 rounded-full border transition-colors cursor-pointer ${
